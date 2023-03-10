@@ -79,16 +79,34 @@ class ViewController extends Controller
             $post->categories = $cate;
             $after_paragraph = '</p>';
             $paragraphs = explode($after_paragraph, $post->post_content);
-            foreach ($paragraphs as $index => $paragraph) {
-                if (trim($paragraph)) {
-                    $paragraphs[$index] .= $after_paragraph . '<br/>';
+            if (count($paragraphs) > 1) {
+                foreach ($paragraphs as $index => $paragraph) {
+                    if (trim($paragraph)) {
+                        $paragraphs[$index] .= $after_paragraph . '<br/>';
+                    }
+        
+                    // if (($index + 1) % 3 == 0) {
+                    //     $paragraphs[$index] .= '<div id="advertiser" class="w-full bg-gray-200 rounded-xl mt-4 mb-4" style="height: 200px;">
+        
+                    //     </div>';
+                    // }
                 }
-    
-                // if (($index + 1) % 3 == 0) {
-                //     $paragraphs[$index] .= '<div id="advertiser" class="w-full bg-gray-200 rounded-xl mt-4 mb-4" style="height: 200px;">
-    
-                //     </div>';
-                // }
+            }
+
+            $after_paragraph = '</strong>';
+            $paragraphs = explode($after_paragraph, $post->post_content);
+            if (count($paragraphs) > 1) {
+                foreach ($paragraphs as $index => $paragraph) {
+                    if (trim($paragraph)) {
+                        $paragraphs[$index] .= $after_paragraph . '<br/>';
+                    }
+        
+                    // if (($index + 1) % 3 == 0) {
+                    //     $paragraphs[$index] .= '<div id="advertiser" class="w-full bg-gray-200 rounded-xl mt-4 mb-4" style="height: 200px;">
+        
+                    //     </div>';
+                    // }
+                }
             }
     
             $post->post_content = implode('', $paragraphs);
